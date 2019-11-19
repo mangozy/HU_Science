@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1554731994650.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "698006224",
+    "id" : "86559470",
+    "lastKnownWriteTime" : 1554755638,
+    "last_content_update" : 1554755638168,
+    "path" : "~/GitHub/srbc/code/vs/Signal2Noise/Signal2Noise/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "32,6",
+        "scrollLine" : "28"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

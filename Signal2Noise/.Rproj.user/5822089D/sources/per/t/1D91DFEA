@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574176980688.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2116244080",
+    "id" : "1D91DFEA",
+    "lastKnownWriteTime" : 1555093278,
+    "last_content_update" : 1555093278,
+    "path" : "~/Signal2Noise_Zi_v2/scripts/ui_scripts.R",
+    "project_path" : "scripts/ui_scripts.R",
+    "properties" : {
+        "cursorPosition" : "8,2",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

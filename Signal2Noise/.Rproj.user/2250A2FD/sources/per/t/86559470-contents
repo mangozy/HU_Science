@@ -1,0 +1,84 @@
+#
+# This is the user-interface definition of a Shiny web application. You can
+# run the application by clicking 'Run App' above.
+#
+# Find out more about building applications with Shiny here:
+# 
+#    http://shiny.rstudio.com/
+#
+
+options(scipen = 999)
+packages <- c('readr', 'DT', 'tidyverse', 'shiny', 'dplyr', 'ggplot2', 'shiny', 'shinydashboard')
+
+for (p in packages) {
+    if (!require(p, character.only = TRUE)) install.packages(p, dependencies = TRUE)
+    suppressMessages(library(p, character.only = TRUE, quietly = TRUE))
+}
+
+shinyUI(
+  
+  dashboardPage(
+    
+    dashboardHeader(title="SRBC Signal2Noise", 
+                    dropdownMenuOutput("mailsystem"),
+                    tags$li(a(href = 'http://www.harrisburgu.edu/',
+                              img(src = 'www/img/HU_finalLogo.png', 
+                                  title = "Harrisburg University", 
+                                  height = "30px"),
+                              style = "padding-top:10px; padding-bottom:10px;"),
+                            class = "dropdown")
+                    ),
+
+    dashboardSidebar(
+      
+      sidebarMenu(
+        
+        sidebarSearchForm("searchText","buttonSearch,","Search"),
+        
+        menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard"), badgeLabel = "New"),
+          menuSubItem("Bionic Response", tabName = "bionic"),
+          menuSubItem("Sensitive Analysis", tabName = "sensitive")
+        
+    )),
+    
+    dashboardBody(
+      tabItems(
+        tabItem(tabName = "dashboard",
+                box(title = "Welcome to SRBC Signal2Noise Application", 
+                    status = "primary", 
+                    solidHeader = T, 
+                    plotOutput("histogram"))
+                ),
+        
+        
+                tabItem(
+                  
+                        tabName = "bionic",
+                        h2("Bionic Response"),
+                        print(getwd()),
+                        br(),
+                        fluidRow(column(width = 8,
+                                        infoBoxOutput("hilln1"),
+                                        infoBoxOutput("hilln2"),
+                                        infoBoxOutput("margalef"))),
+                        fluidRow(box(title = "Dashboard", status = "warning", solidHeader = T,
+                                     sliderInput("ph_macro", "pH", 1, 100, 50),
+                                     sliderInput("watertemp_macro", "Water Temp", 1, 100, 50),
+                                     sliderInput("turbidity_macro", "Turbidity", 1, 100, 50),
+                                     sliderInput("spcond_macro", "SpCond", 1, 100, 50),
+                                     sliderInput("o2dis_macro", "O2Dis", 1, 100, 50),
+                                     sliderInput("oxygen_macro", "Oxygen", 1, 100, 50),
+                                     sliderInput("flow_macro", "Flow", 1, 100, 50),
+                                     box(checkboxGroupInput("measures","Measures",
+                                                            choices = c("Hill's N1","Hill's N2","Margalef"),
+                                                            selected = NULL, inline = TRUE)
+                                         , width = "100%")
+                                  )
+                              )
+                        ),
+                tabItem(tabName = "sensitive",
+                        h2("Sensitive Analysis"))
+                )
+        )
+      )
+    )

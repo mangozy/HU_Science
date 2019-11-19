@@ -1,0 +1,12 @@
+name: Signal2Noise
+title: Signal2Noise
+username:
+account: hu-science
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 854378
+bundleId: 2006483
+url: https://hu-science.shinyapps.io/Signal2Noise/
+when: 1555090399.80712
+asMultiple: FALSE
+asStatic: FALSE

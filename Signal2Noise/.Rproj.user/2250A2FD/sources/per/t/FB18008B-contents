@@ -1,0 +1,44 @@
+#
+# This is the server logic of a Shiny web application. You can run the 
+# application by clicking 'Run App' above.
+#
+# Find out more about building applications with Shiny here:
+# 
+#    http://shiny.rstudio.com/
+#
+
+options(scipen = 999)
+packages <- c('readr', 'DT', 'tidyverse', 'shiny', 'dplyr', 'ggplot2', 'shiny','shinydashboard')
+
+for (p in packages) {
+    if (!require(p, character.only = TRUE)) install.packages(p, dependencies = TRUE)
+    suppressMessages(library(p, character.only = TRUE, quietly = TRUE))
+}
+
+# Define server logic required to draw a histogram
+shinyServer(function(input, output) {
+  output$histogram = renderPlot({
+    hist(faithful$eruptions,breaks = input$ph_macro)
+  })
+  
+  output$mailsystem = renderMenu({
+    mails = apply(read_csv('data/messages.csv'), 1, function(row){
+      messageItem(from = row[['from']], message = row[['message']])
+    })
+    dropdownMenu(type = "notifications", .list = mails, icon = icon("bar-chart"))
+  })
+
+  output$hilln1 = renderInfoBox(
+    infoBox("Hill's N1",100, icon = icon("neos"))
+  )
+  
+  output$hilln2 = renderInfoBox(
+    infoBox("Hill's N2",100, icon = icon("signature"))
+  )
+  
+  output$margalef = renderInfoBox(
+    infoBox("Margalef",100, icon = icon("mix"))
+  )
+  
+  
+})
